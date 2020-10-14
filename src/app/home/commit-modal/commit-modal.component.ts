@@ -23,7 +23,6 @@ export class CommitModalComponent implements OnInit {
     this._githubService
       .getCommitDetails(this.sha)
       .subscribe((commitDetails) => {
-        console.log(commitDetails);
         this.commitDetails = commitDetails;
       });
   }

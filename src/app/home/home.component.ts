@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
 
   getCommits(): void {
     this._githubService.getCommits().subscribe((commitResponses) => {
-      console.log(commitResponses);
       this.commitResponses = commitResponses;
     });
   }

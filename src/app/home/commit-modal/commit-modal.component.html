@@ -21,10 +21,11 @@
       {{ messagePart }}
     </div>
     <br />
-    <a href="{{ commitDetails.html_url }}" target="_blank">View on GitHub</a
-    ><img
-      src="https://icongr.am/fontawesome/github.svg?size=24&color=currentColor"
-    />
+    <a href="{{ commitDetails.html_url }}" target="_blank"
+      >View on GitHub
+      <img
+        src="https://icongr.am/fontawesome/github.svg?size=24&color=currentColor"
+    /></a>
     <br />
     <br />
     <ngb-accordion *ngFor="let file of commitDetails.files">
