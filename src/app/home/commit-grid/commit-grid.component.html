@@ -1,0 +1,27 @@
+<div>
+  Select a commit in the table below to view more information about it.
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Author</th>
+        <th scope="col">Message</th>
+        <th scope="col">SHA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let commitResponse of commitResponses"
+        (click)="handleRowClick()"
+      >
+        <td>
+          {{ commitResponse.commit.author.date | date: "short" }}
+        </td>
+        <td>{{ commitResponse.commit.author.name }}</td>
+        <td>{{ commitResponse.commit.message.split("\n")[0] }}</td>
+        <td>{{ commitResponse.sha }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
