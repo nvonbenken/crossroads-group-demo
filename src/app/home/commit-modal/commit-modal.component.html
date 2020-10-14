@@ -1,1 +1,48 @@
-<p>commit-modal works!</p>
+<div>
+  <div class="modal-header">
+    <h5 class="modal-title">Commit Details</h5>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div
+      *ngFor="
+        let messagePart of commitDetails.commit.message.split('\n');
+        first as isFirst
+      "
+      [class.font-weight-bold]="isFirst"
+    >
+      {{ messagePart }}
+    </div>
+    <br />
+    <a href="{{ commitDetails.html_url }}" target="_blank">View on GitHub</a
+    ><img
+      src="https://icongr.am/fontawesome/github.svg?size=24&color=currentColor"
+    />
+    <br />
+    <br />
+    <ngb-accordion *ngFor="let file of commitDetails.files">
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <div class="title-container">
+            <span class="float-left">{{ file.filename }}</span>
+            <div class="float-right">
+              <span>+{{ file.additions }} </span>
+              <span>~{{ file.changes }} </span>
+              <span>-{{ file.deletions }} </span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <pre>{{ file.patch }}</pre>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
